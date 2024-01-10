@@ -1,11 +1,11 @@
-import Image from "next/image";
+import Form from "./components/Form";
 
 export default function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
       <div className="card w-96 glass">
         <div>
-          <span>NEW TASK FORM</span>
+          <Form />
         </div>
         <div className="card-body">
           <h2 className="card-title capitalize">tasks list</h2>
