@@ -1,6 +1,11 @@
 import Form from "./components/Form";
+import { getAllTasks } from "./requests/tasks.request";
 
-export default function Home() {
+export default async function Home() {
+  const tasks = await getAllTasks();
+
+  console.log(tasks)
+
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
       <div className="card w-96 glass">
@@ -11,7 +16,7 @@ export default function Home() {
           <h2 className="card-title capitalize">tasks list</h2>
           <p>What are you going to do today?</p>
           <div className="card-actions justify-end">
-            <span>TASKS LIST CONTAINER</span>
+            <span></span>
           </div>
         </div>
       </div>

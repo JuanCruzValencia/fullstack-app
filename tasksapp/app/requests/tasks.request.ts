@@ -1,4 +1,4 @@
-import { Task } from "../interfaces/tasks.intecerface";
+import { NewTask, UpdateTask, Task } from "../interfaces/tasks.intecerface";
 import { ServerRest } from "./backend";
 
 export async function getAllTasks(): Promise<Task[]> {
@@ -13,7 +13,7 @@ export async function getOneTask(id: string): Promise<Task> {
   return data;
 }
 
-export async function postTask(task: Task): Promise<void> {
+export async function postTask(task: NewTask): Promise<void> {
   const { data } = await ServerRest.post("/api/tasks", task);
 
   console.log(data);
@@ -21,7 +21,7 @@ export async function postTask(task: Task): Promise<void> {
 
 export async function updateTask(
   id: string,
-  task: Partial<Task>
+  task: UpdateTask
 ): Promise<Task> {
   const { data } = await ServerRest.put(`/api/tasks/${id}`, task);
 

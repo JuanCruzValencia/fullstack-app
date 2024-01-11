@@ -1,3 +1,4 @@
+'use client'
 import { useForm, SubmitHandler } from "react-hook-form";
 
 type Inputs = {
@@ -9,7 +10,6 @@ export default function Form() {
   const {
     register,
     handleSubmit,
-
     formState: { errors },
   } = useForm<Inputs>();
   const onSubmit: SubmitHandler<Inputs> = (data) => console.log(data);
