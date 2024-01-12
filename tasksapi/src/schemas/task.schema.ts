@@ -8,7 +8,7 @@ export class Task {
   title: string;
 
   @Prop({ trim: true })
-  description: string;
+  task: string;
 
   @Prop({ default: false })
   done: boolean;

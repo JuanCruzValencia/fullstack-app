@@ -7,7 +7,7 @@ export class UpdateTaskDto {
 
   @IsString()
   @IsOptional()
-  description: string;
+  task: string;
 
   @IsBoolean()
   @IsOptional()

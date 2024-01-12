@@ -1,5 +1,6 @@
-'use client'
+"use client";
 import { useForm, SubmitHandler } from "react-hook-form";
+import { postTask } from "../requests/tasks.request";
 
 type Inputs = {
   title: string;
@@ -12,11 +13,12 @@ export default function Form() {
     handleSubmit,
     formState: { errors },
   } = useForm<Inputs>();
-  const onSubmit: SubmitHandler<Inputs> = (data) => console.log(data);
+  const onSubmit: SubmitHandler<Inputs> = async (data) =>
+    await postTask({ ...data });
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <input defaultValue="test" {...register("title")} />
+      <input {...register("title", { required: true })} />
       {errors.title && <span>This field is required</span>}
 
       <input {...register("task", { required: true })} />
