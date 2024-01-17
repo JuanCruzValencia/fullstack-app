@@ -1,5 +1,6 @@
 import { NewTask, UpdateTask, Task } from "../interfaces/tasks.intecerface";
 import { ServerRest } from "./backend";
+import { ClientRest } from "./frontend";
 
 export async function getAllTasks(): Promise<Task[]> {
   const { data } = await ServerRest.get<Task[]>("/tasks");
@@ -7,8 +8,8 @@ export async function getAllTasks(): Promise<Task[]> {
   return data;
 }
 
-export async function postTask(task: NewTask): Promise<void> {
-  const { data } = await ServerRest.post("/tasks", task);
+export async function postTask(task: NewTask): Promise<Task> {
+  const { data } = await ClientRest.post("/tasks", { task });
 
   return data;
 }
