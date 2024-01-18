@@ -9,7 +9,7 @@ export async function getAllTasks(): Promise<Task[]> {
 }
 
 export async function postTask(task: NewTask): Promise<Task> {
-  const { data } = await ClientRest.post("/tasks", { task });
+  const { data } = await ClientRest.post("/tasks", task);
 
   return data;
 }

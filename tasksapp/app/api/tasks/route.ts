@@ -1,13 +1,12 @@
 import { ServerRest } from "@/app/requests/backend";
-import { NextApiRequest, NextApiResponse } from "next";
+import { NextResponse } from "next/server";
 
-export async function POST(
-  req: NextApiRequest,
-  res: NextApiResponse
-) {
-  const { data } = await ServerRest.post("/tasks", { ...req.body });
+export async function POST(req: Request, res: NextResponse) {
+  const body = await req.json();
 
-  console.log(data);
+  const { data } = await ServerRest.post("/tasks", { ...body });
 
-  return res.status(200).send(data);
+  return NextResponse.json(data, {
+    status: 201,
+  });
 }
