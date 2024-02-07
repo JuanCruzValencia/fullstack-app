@@ -1,8 +1,10 @@
 import Form from "./components/Form";
+import { TaskContainer } from "./components/TaskContainer";
+import { Task } from "./interfaces/tasks.intecerface";
 import { getAllTasks } from "./requests/tasks.request";
 
 export default async function Home() {
-  const tasks = await getAllTasks();
+  const tasks: Task[] = await getAllTasks();
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
@@ -14,11 +16,7 @@ export default async function Home() {
             <Form />
           </div>
           <div className="card-actions justify-end">
-            <span>
-              {tasks.map((task) => {
-                return JSON.stringify(task);
-              })}
-            </span>
+            <TaskContainer tasksDB={tasks} />
           </div>
         </div>
       </div>
